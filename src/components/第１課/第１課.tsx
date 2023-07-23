@@ -37,13 +37,13 @@ const 第１課 = () => {
     return () => {};
   }, [options]);
 
-  const forceUpdate = () => {
-    setOptions((prev) => {
-      return prev.map((e: any) => {
-        return e;
-      });
-    });
-  };
+  // const forceUpdate = () => {
+  //   setOptions((prev) => {
+  //     return prev.map((e: any) => {
+  //       return e;
+  //     });
+  //   });
+  // };
 
   const validate = (choices: any, setChoices: any) => {
     const correctOrder = choices

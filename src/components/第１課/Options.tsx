@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 const Options = ({
   validate,
   option,
@@ -7,21 +5,6 @@ const Options = ({
   setSelected,
   selected,
 }: any) => {
-  const [clicked, setClicked] = useState<boolean>();
-
-  useEffect(() => {
-    selected.map((e: any) => {
-      if (e.word === option.word) {
-        setClicked(e.state);
-      } else {
-        if (e.word !== option.word) {
-          setClicked(false);
-        }
-      }
-    });
-    // console.log({ from: option, clicked });
-  }, [selected, option]);
-
   const handleClick = () => {
     setOptions((prev: any) => {
       return prev.map((e: any) => {
