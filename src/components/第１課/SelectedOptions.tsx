@@ -1,18 +1,26 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const SelectedOptions = ({ selected, setSelected, setOptions }: any) => {
+const SelectedOptions = ({
+  selected,
+  setSelected,
+  setOptions,
+  validate,
+}: any) => {
+  const [color, setColor] = useState<boolean>();
+
   useEffect(() => {
     console.log({ selected });
+    setColor(selected.correct);
   }, [selected]);
 
   const style = {
-    backgroundColor: selected.correct ? "green" : "red",
+    backgroundColor: color ? "green" : "red",
   };
 
   const handleClick = () => {
     setOptions((prev: any) => {
       const clone = prev.map((e: any) => {
-        if (e.word === selected.word) {
+        if (e.word === selected.word && e.order === selected.order) {
           return { ...e, state: false };
         }
         return e;
@@ -23,9 +31,11 @@ const SelectedOptions = ({ selected, setSelected, setOptions }: any) => {
 
     setSelected((prev: any) => {
       return prev.filter((e: any) => {
-        return e.word !== selected.word;
+        return e.order !== selected.order;
       });
     });
+
+    validate();
   };
 
   return (

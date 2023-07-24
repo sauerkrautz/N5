@@ -1,5 +1,5 @@
 import { useSwiper } from "swiper/react";
-import { AiOutlineArrowLeft } from "react-icons/ai";
+import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 
 const PreviousButton = () => {
   const swiper = useSwiper();
@@ -10,8 +10,8 @@ const PreviousButton = () => {
       }}
     >
       {" "}
-      <p className="text-4xl text-white">
-        <AiOutlineArrowLeft />
+      <p className="text-5xl text-white">
+        <BsFillArrowLeftSquareFill />
       </p>{" "}
     </button>
   );

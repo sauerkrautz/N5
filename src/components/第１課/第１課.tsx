@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import NextButton from "../components/NextButton";
 import PreviousButton from "../components/PreviousButton";
@@ -17,6 +17,9 @@ interface Ioptions {
 const 第１課 = () => {
   const [selected, setSelected] = useState<Ioptions[]>([]);
   const [selected1, setSelected1] = useState<Ioptions[]>([]);
+  const [selected2, setSelected2] = useState<Ioptions[]>([]);
+  const [selected3, setSelected3] = useState<Ioptions[]>([]);
+  const [selected4, setSelected4] = useState<Ioptions[]>([]);
 
   const [options, setOptions] = useState<Ioptions[]>([
     { word: "は", state: false, order: 1, correct: false },
@@ -32,26 +35,44 @@ const 第１課 = () => {
     { word: "ではありません", state: false, order: 3, correct: false },
   ]);
 
-  useEffect(() => {
-    // console.log({ orders: validate() });
-    return () => {};
-  }, [options]);
+  const [options2, setOptions2] = useState<Ioptions[]>([
+    { word: "は", state: false, order: 1, correct: false },
+    { word: "あのひと", state: false, order: 0, correct: false },
+    { word: "です", state: false, order: 3, correct: false },
+    { word: "だれ", state: false, order: 2, correct: false },
+    { word: "か", state: false, order: 4, correct: false },
+  ]);
 
-  // const forceUpdate = () => {
-  //   setOptions((prev) => {
-  //     return prev.map((e: any) => {
-  //       return e;
-  //     });
-  //   });
-  // };
+  const [options3, setOptions3] = useState<Ioptions[]>([
+    { word: "は", state: false, order: 1, correct: false },
+    { word: "あのひと", state: false, order: 0, correct: false },
+    { word: "です", state: false, order: 3, correct: false },
+    { word: "がくせい", state: false, order: 2, correct: false },
+    { word: "がくせい", state: false, order: 6, correct: false },
+    { word: "です", state: false, order: 7, correct: false },
+    { word: "わたし", state: false, order: 4, correct: false },
+    { word: "も", state: false, order: 5, correct: false },
+  ]);
+
+  const [options4, setOptions4] = useState<Ioptions[]>([
+    { word: "は", state: false, order: 1, correct: false },
+    { word: "あのひと", state: false, order: 0, correct: false },
+    { word: "の", state: false, order: 3, correct: false },
+    { word: "インドネシア", state: false, order: 2, correct: false },
+    { word: "じっしゅうせい", state: false, order: 4, correct: false },
+    { word: "です", state: false, order: 5, correct: false },
+  ]);
 
   const validate = (choices: any, setChoices: any) => {
-    const correctOrder = choices
-      .map((e: any) => e.order)
-      .sort((a: number, b: number) => a - b);
+    const clone = [...choices];
+
+    const sortedOptions = clone.sort((a: any, b: any) => {
+      return a.order - b.order;
+    });
+
     setChoices((prev: any) => {
       return prev.map((e: any, i: number) => {
-        if (e.order === correctOrder[i]) {
+        if (e.word === sortedOptions[i].word) {
           return { ...e, correct: true };
         }
         return e;
@@ -69,7 +90,6 @@ const 第１課 = () => {
       <Swiper
         className="h-full w-full relative"
         slidesPerView={1}
-        allowTouchMove={false}
         spaceBetween={50}
       >
         <SwiperSlide className=" text-white">
@@ -88,10 +108,14 @@ const 第１課 = () => {
             </div>
             <br />
             <p>
-              私 <span className="font-bold">は</span> 日本人です
-            </p>
-            <p>
-              わたし <span className="font-bold">は</span> にほんじんです
+              <ruby>
+                私 <rt>わたし</rt>{" "}
+              </ruby>{" "}
+              <span className="font-bold">は</span>{" "}
+              <ruby>
+                日本人 <rt>にほんじん</rt>{" "}
+              </ruby>
+              です
             </p>
             <br />
             <p>
@@ -100,7 +124,7 @@ const 第１課 = () => {
           </div>
         </SwiperSlide>
 
-        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-16 px-4">
+        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-20 px-4">
           <h1 className="bg-rose-500 p-2 rounded-lg -mt-14 w-full text-center ">
             Latihan
           </h1>
@@ -111,6 +135,7 @@ const 第１課 = () => {
                   selected={e}
                   setOptions={setOptions}
                   setSelected={setSelected}
+                  validate={() => validate(options, setSelected)}
                 />
               );
             })}
@@ -131,28 +156,28 @@ const 第１課 = () => {
         </SwiperSlide>
 
         <SwiperSlide className=" text-white">
-          <div
-            className="border-[2px] flex flex-col rounded-lg p-3 border-solid
-        border-slate-400"
-          >
+          <div className="border-[2px] flex flex-col rounded-lg p-3 border-solid border-slate-400">
             <div>
-              Kalimat bentuk negatif dengan menggunakan{" "}
-              <span className="font-bold">ではありません</span>
+              Kalimat bentuk negatif dengan menggunakan
+              <span className="font-bold">ではありません </span>
               atau <span className="font-bold">じゃありません</span>
             </div>
             <br />
             <div>
-              <span className="font-bold">ではありまえん</span> menggantikan{" "}
+              <span className="font-bold">ではありません</span> menggantikan
               <span className="font-bold">です</span> yang ada pada kalimat
               positif dan merubah kalimat menjadi negatif, contoh:
             </div>
             <br />
             <p>
-              私 <span className="font-bold">は</span> 日本人ではありません
-            </p>
-            <p>
-              わたし <span className="font-bold">は</span>{" "}
-              にほんじんじゃありません
+              <ruby>
+                私 <rt>わたし</rt>
+              </ruby>
+              <span className="font-bold"> は </span>
+              <ruby>
+                日本人 <rt>にほんじん</rt>
+              </ruby>
+              <span className="font-bold"> ではありません </span>
             </p>
             <br />
             <p>
@@ -161,7 +186,7 @@ const 第１課 = () => {
           </div>
         </SwiperSlide>
 
-        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-16 px-4">
+        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-20 px-4">
           <h1 className="bg-rose-500 p-2 rounded-lg -mt-14 w-full text-center ">
             Latihan
           </h1>
@@ -172,6 +197,7 @@ const 第１課 = () => {
                   selected={e}
                   setOptions={setOptions1}
                   setSelected={setSelected1}
+                  validate={() => validate(options1, setSelected1)}
                 />
               );
             })}
@@ -192,25 +218,176 @@ const 第１課 = () => {
         </SwiperSlide>
 
         <SwiperSlide className=" text-white">
-          <div
-            className="border-[2px] flex flex-col rounded-lg p-3 border-solid
-        border-slate-400"
-          >
+          <div className="border-[2px] flex flex-col rounded-lg p-3 border-solid border-slate-400">
             <div>
-              Kalimat tanya dengan menggunakan akhiran{" "}
-              <span className="font-bold">ですか</span>. Digunakan sebagai
-              penanda kalimat tanya, contoh:
+              Kalimat tanya dengan menggunakan akhiran
+              <span className="font-bold">ですか</span>.
+              <span className="font-bold"> ですか</span> tidak bisa berdiri
+              sendiri. Digunakan sebagai penanda kalimat tanya, contoh:
             </div>
             <br />
 
             <p>
-              あなた は <span className="font-bold">だれ ですか</span>
+              あなた は <span className="font-bold">だれ です か</span>
             </p>
 
             <br />
             <p>
               Kamu <span className="font-bold">siapa</span>
             </p>
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-20 px-4">
+          <h1 className="bg-rose-500 p-2 rounded-lg -mt-14 w-full text-center ">
+            Latihan
+          </h1>
+          <div className="flex flex-wrap gap-2 -mt-[10vh]">
+            {selected2.map((e: any) => {
+              return (
+                <SelectedOptions
+                  selected={e}
+                  setOptions={setOptions2}
+                  setSelected={setSelected2}
+                  validate={() => validate(options2, setSelected2)}
+                />
+              );
+            })}
+          </div>
+          <div className="flex flex-wrap gap-2 mb-10">
+            {options2.map((e: any) => {
+              return (
+                <Options
+                  validate={() => validate(options2, setSelected2)}
+                  option={e}
+                  setOptions={setOptions2}
+                  setSelected={setSelected2}
+                  selected={selected2}
+                />
+              );
+            })}
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide className=" text-white">
+          <div className="border-[2px] flex flex-col rounded-lg p-3 border-solid border-slate-400">
+            <div>
+              Partikel <span className="font-bold">も</span> yang dapat
+              diartikan sebagai <span className="font-bold">juga</span>.
+              Digunakan ketika suatu subjek memiliki kesamaan dengan subjek lain
+              untuk mengekspresikan kesamaan antara kedua atau lebih subjek,
+              contoh:
+            </div>
+            <br />
+            <p>
+              <ruby>あなた</ruby>
+              <span className="font-bold"> は </span>
+              <ruby>
+                学生 <rt>がくせい</rt>
+              </ruby>
+              <span className="font-bold">です</span>、
+              <ruby>
+                私 <rt>わたし</rt>
+              </ruby>
+              <span className="font-bold"> も </span>
+              <ruby>
+                学生 <rt>がくせい</rt>
+              </ruby>
+              です
+            </p>
+            <br />
+            <p>
+              Anda adalah pelajar, saya <span className="font-bold">juga</span>{" "}
+              pelajar
+            </p>
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-20 px-4">
+          <h1 className="bg-rose-500 p-2 rounded-lg -mt-14 w-full text-center ">
+            Latihan
+          </h1>
+          <div className="flex flex-wrap gap-2 -mt-[10vh]">
+            {selected3.map((e: any) => {
+              return (
+                <SelectedOptions
+                  selected={e}
+                  setOptions={setOptions3}
+                  setSelected={setSelected3}
+                  validate={() => validate(options3, setSelected3)}
+                />
+              );
+            })}
+          </div>
+          <div className="flex flex-wrap gap-2 mb-10">
+            {options3.map((e: any) => {
+              return (
+                <Options
+                  validate={() => validate(options3, setSelected3)}
+                  option={e}
+                  setOptions={setOptions3}
+                  setSelected={setSelected3}
+                  selected={selected3}
+                />
+              );
+            })}
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide className=" text-white">
+          <div
+            className="border-[2px] flex flex-col rounded-lg p-3 border-solid
+        border-slate-400"
+          >
+            <div>
+              Partikel <span className="font-bold">の</span> yang digunakan
+              untuk menghubungkan dua kata benda dan sebagai tanda kepemilikan.
+            </div>
+            <br />
+            <p>
+              <span>これ は </span>
+              <ruby>
+                私 <rt>わたし</rt>
+              </ruby>
+              <span className="font-bold"> の </span>
+              <ruby>
+                靴 <rt>くつ</rt>
+              </ruby>
+              <span> です</span>
+            </p>
+            <br />
+            <p>Ini adalah sepatu saya</p>
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-20 px-4">
+          <h1 className="bg-rose-500 p-2 rounded-lg -mt-14 w-full text-center ">
+            Latihan
+          </h1>
+          <div className="flex flex-wrap gap-2 -mt-[10vh]">
+            {selected4.map((e: any) => {
+              return (
+                <SelectedOptions
+                  selected={e}
+                  setOptions={setOptions4}
+                  setSelected={setSelected4}
+                  validate={() => validate(options4, setSelected4)}
+                />
+              );
+            })}
+          </div>
+          <div className="flex flex-wrap gap-2 mb-10">
+            {options4.map((e: any) => {
+              return (
+                <Options
+                  validate={() => validate(options4, setSelected4)}
+                  option={e}
+                  setOptions={setOptions4}
+                  setSelected={setSelected4}
+                  selected={selected4}
+                />
+              );
+            })}
           </div>
         </SwiperSlide>
 

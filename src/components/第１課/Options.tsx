@@ -6,18 +6,21 @@ const Options = ({
   selected,
 }: any) => {
   const handleClick = () => {
+    let optionLength: number = 3;
     setOptions((prev: any) => {
       return prev.map((e: any) => {
-        if (e.word === option.word) {
+        if (e.word === option.word && e.order === option.order) {
           return { ...e, state: true };
         }
+
+        optionLength = prev.length;
 
         return e;
       });
     });
 
     setSelected((prev: any) => {
-      if (selected.length > 3) {
+      if (selected.length > optionLength) {
         return prev;
       } else {
         prev = [...prev, { ...option }];
