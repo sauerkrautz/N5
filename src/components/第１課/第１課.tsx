@@ -74,8 +74,9 @@ const 第１課 = () => {
       return prev.map((e: any, i: number) => {
         if (e.word === sortedOptions[i].word) {
           return { ...e, correct: true };
+        } else {
+          return { ...e, correct: false };
         }
-        return e;
       });
     });
   };
@@ -92,6 +93,7 @@ const 第１課 = () => {
         slidesPerView={1}
         spaceBetween={50}
       >
+        {/* First */}
         <SwiperSlide className=" text-white">
           <div
             className="border-[2px] flex flex-col rounded-lg p-3 border-solid
@@ -124,7 +126,7 @@ const 第１課 = () => {
           </div>
         </SwiperSlide>
 
-        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-20 px-4">
+        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-16 px-4">
           <h1 className="bg-rose-500 p-2 rounded-lg -mt-14 w-full text-center ">
             Latihan
           </h1>
@@ -155,6 +157,7 @@ const 第１課 = () => {
           </div>
         </SwiperSlide>
 
+        {/* second */}
         <SwiperSlide className=" text-white">
           <div className="border-[2px] flex flex-col rounded-lg p-3 border-solid border-slate-400">
             <div>
@@ -186,7 +189,7 @@ const 第１課 = () => {
           </div>
         </SwiperSlide>
 
-        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-20 px-4">
+        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-16 px-4 mb-[5vh] ">
           <h1 className="bg-rose-500 p-2 rounded-lg -mt-14 w-full text-center ">
             Latihan
           </h1>
@@ -202,7 +205,7 @@ const 第１課 = () => {
               );
             })}
           </div>
-          <div className="flex flex-wrap gap-2 mb-10">
+          <div className="flex flex-wrap gap-2 mb-14">
             {options1.map((e: any) => {
               return (
                 <Options
@@ -217,6 +220,7 @@ const 第１課 = () => {
           </div>
         </SwiperSlide>
 
+        {/* third */}
         <SwiperSlide className=" text-white">
           <div className="border-[2px] flex flex-col rounded-lg p-3 border-solid border-slate-400">
             <div>
@@ -238,7 +242,7 @@ const 第１課 = () => {
           </div>
         </SwiperSlide>
 
-        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-20 px-4">
+        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-16 px-4 mb-[5vh] ">
           <h1 className="bg-rose-500 p-2 rounded-lg -mt-14 w-full text-center ">
             Latihan
           </h1>
@@ -254,7 +258,7 @@ const 第１課 = () => {
               );
             })}
           </div>
-          <div className="flex flex-wrap gap-2 mb-10">
+          <div className="flex flex-wrap gap-2 mb-14">
             {options2.map((e: any) => {
               return (
                 <Options
@@ -269,6 +273,7 @@ const 第１課 = () => {
           </div>
         </SwiperSlide>
 
+        {/* fourth */}
         <SwiperSlide className=" text-white">
           <div className="border-[2px] flex flex-col rounded-lg p-3 border-solid border-slate-400">
             <div>
@@ -303,7 +308,7 @@ const 第１課 = () => {
           </div>
         </SwiperSlide>
 
-        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-20 px-4">
+        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-16 px-4 mb-[5vh] ">
           <h1 className="bg-rose-500 p-2 rounded-lg -mt-14 w-full text-center ">
             Latihan
           </h1>
@@ -319,7 +324,7 @@ const 第１課 = () => {
               );
             })}
           </div>
-          <div className="flex flex-wrap gap-2 mb-10">
+          <div className="flex flex-wrap gap-2 mb-14">
             {options3.map((e: any) => {
               return (
                 <Options
@@ -334,6 +339,7 @@ const 第１課 = () => {
           </div>
         </SwiperSlide>
 
+        {/* fifth */}
         <SwiperSlide className=" text-white">
           <div
             className="border-[2px] flex flex-col rounded-lg p-3 border-solid
@@ -360,7 +366,7 @@ const 第１課 = () => {
           </div>
         </SwiperSlide>
 
-        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-20 px-4">
+        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-16 px-4 mb-[5vh] ">
           <h1 className="bg-rose-500 p-2 rounded-lg -mt-14 w-full text-center ">
             Latihan
           </h1>
@@ -376,7 +382,7 @@ const 第１課 = () => {
               );
             })}
           </div>
-          <div className="flex flex-wrap gap-2 mb-10">
+          <div className="flex flex-wrap gap-2 mb-14">
             {options4.map((e: any) => {
               return (
                 <Options
@@ -388,6 +394,37 @@ const 第１課 = () => {
                 />
               );
             })}
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide className=" text-white">
+          <div
+            className="border-[2px] flex flex-col rounded-lg p-3 border-solid
+        border-slate-400"
+          >
+            <div>
+              Menanyakan umur dengan kata tanya apa{" "}
+              <span className="font-bold">
+                {" "}
+                <ruby>
+                  何 <rt>なん</rt>さい{" "}
+                </ruby>{" "}
+              </span>
+            </div>
+            <br />
+            <p>
+              <span>これ は </span>
+              <ruby>
+                私 <rt>わたし</rt>
+              </ruby>
+              <span className="font-bold"> の </span>
+              <ruby>
+                靴 <rt>くつ</rt>
+              </ruby>
+              <span> です</span>
+            </p>
+            <br />
+            <p>Ini adalah sepatu saya</p>
           </div>
         </SwiperSlide>
 
