@@ -90,6 +90,7 @@ const 第１課 = () => {
       </div>
       <Swiper
         className="h-full w-full relative"
+        allowTouchMove={false}
         slidesPerView={1}
         spaceBetween={50}
       >
@@ -111,11 +112,11 @@ const 第１課 = () => {
             <br />
             <p>
               <ruby>
-                私 <rt>わたし</rt>{" "}
-              </ruby>{" "}
-              <span className="font-bold">は</span>{" "}
+                私 <rt>わたし</rt>
+              </ruby>
+              <span className="font-bold">は</span>
               <ruby>
-                日本人 <rt>にほんじん</rt>{" "}
+                日本人 <rt>にほんじん</rt>
               </ruby>
               です
             </p>
@@ -302,7 +303,7 @@ const 第１課 = () => {
             </p>
             <br />
             <p>
-              Anda adalah pelajar, saya <span className="font-bold">juga</span>{" "}
+              Anda adalah pelajar, saya <span className="font-bold">juga</span>
               pelajar
             </p>
           </div>
@@ -403,28 +404,43 @@ const 第１課 = () => {
         border-slate-400"
           >
             <div>
-              Menanyakan umur dengan kata tanya apa{" "}
+              <span>Menanyakan umur dengan kata tanya apa </span>
               <span className="font-bold">
-                {" "}
                 <ruby>
-                  何 <rt>なん</rt>さい{" "}
-                </ruby>{" "}
+                  何 <rt>なん</rt> さい
+                </ruby>
               </span>
+              <span>
+                {" "}
+                digunakan dalam situasi non-formal atau kepada lawan bicara yang
+                setara dan lebih muda.{" "}
+              </span>
+              <span>
+                Untuk menanyakan umur kepada orang yang lebih tua, bisa
+                menggunakan{" "}
+              </span>
+              <span className="font-bold">
+                <ruby>おいくつ</ruby>
+              </span>
+              <span>, contoh:</span>
             </div>
             <br />
             <p>
-              <span>これ は </span>
+              <ruby>あなた</ruby>
+              <span> は </span>
               <ruby>
-                私 <rt>わたし</rt>
+                何 <rt>なん</rt>
               </ruby>
-              <span className="font-bold"> の </span>
-              <ruby>
-                靴 <rt>くつ</rt>
-              </ruby>
-              <span> です</span>
+              <span> さい ですか</span>
+            </p>
+            <p>
+              <ruby>あなた</ruby>
+              <span> は </span>
+              <ruby>おいくつ</ruby>
+              <span> ですか</span>
             </p>
             <br />
-            <p>Ini adalah sepatu saya</p>
+            <p>Umur kamu berapa</p>
           </div>
         </SwiperSlide>
 

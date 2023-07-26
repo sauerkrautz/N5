@@ -41,7 +41,7 @@ const SelectedOptions = ({
   return (
     <div
       onClick={handleClick}
-      className="border border-slate-400 rounded-lg p-2"
+      className="border border-slate-400 rounded-lg p-2 transition-colors duration-100 "
       style={style}
     >
       {selected.word}
