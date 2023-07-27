@@ -20,6 +20,7 @@ const 第１課 = () => {
   const [selected2, setSelected2] = useState<Ioptions[]>([]);
   const [selected3, setSelected3] = useState<Ioptions[]>([]);
   const [selected4, setSelected4] = useState<Ioptions[]>([]);
+  const [selected5, setSelected5] = useState<Ioptions[]>([]);
 
   const [options, setOptions] = useState<Ioptions[]>([
     { word: "は", state: false, order: 1, correct: false },
@@ -61,6 +62,14 @@ const 第１課 = () => {
     { word: "インドネシア", state: false, order: 2, correct: false },
     { word: "じっしゅうせい", state: false, order: 4, correct: false },
     { word: "です", state: false, order: 5, correct: false },
+  ]);
+
+  const [options5, setOptions5] = useState<Ioptions[]>([
+    { word: "は", state: false, order: 1, correct: false },
+    { word: "あのひと", state: false, order: 0, correct: false },
+    { word: "さい", state: false, order: 3, correct: false },
+    { word: "23", state: false, order: 2, correct: false },
+    { word: "です", state: false, order: 4, correct: false },
   ]);
 
   const validate = (choices: any, setChoices: any) => {
@@ -441,6 +450,37 @@ const 第１課 = () => {
             </p>
             <br />
             <p>Umur kamu berapa</p>
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-16 px-4 mb-[5vh] ">
+          <h1 className="bg-rose-500 p-2 rounded-lg -mt-14 w-full text-center ">
+            Latihan
+          </h1>
+          <div className="flex flex-wrap gap-2 -mt-[10vh]">
+            {selected5.map((e: any) => {
+              return (
+                <SelectedOptions
+                  selected={e}
+                  setOptions={setOptions5}
+                  setSelected={setSelected5}
+                  validate={() => validate(options5, setSelected5)}
+                />
+              );
+            })}
+          </div>
+          <div className="flex flex-wrap gap-2 mb-14">
+            {options5.map((e: any) => {
+              return (
+                <Options
+                  validate={() => validate(options5, setSelected5)}
+                  option={e}
+                  setOptions={setOptions5}
+                  setSelected={setSelected5}
+                  selected={selected5}
+                />
+              );
+            })}
           </div>
         </SwiperSlide>
 
