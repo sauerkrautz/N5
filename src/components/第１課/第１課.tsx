@@ -21,6 +21,7 @@ const 第１課 = () => {
   const [selected3, setSelected3] = useState<Ioptions[]>([]);
   const [selected4, setSelected4] = useState<Ioptions[]>([]);
   const [selected5, setSelected5] = useState<Ioptions[]>([]);
+  const [selected6, setSelected6] = useState<Ioptions[]>([]);
 
   const [options, setOptions] = useState<Ioptions[]>([
     { word: "は", state: false, order: 1, correct: false },
@@ -70,6 +71,15 @@ const 第１課 = () => {
     { word: "さい", state: false, order: 3, correct: false },
     { word: "23", state: false, order: 2, correct: false },
     { word: "です", state: false, order: 4, correct: false },
+  ]);
+
+  const [options6, setOptions6] = useState<Ioptions[]>([
+    { word: "くに", state: false, order: 1, correct: false },
+    { word: "お", state: false, order: 0, correct: false },
+    { word: "どちら", state: false, order: 3, correct: false },
+    { word: "は", state: false, order: 2, correct: false },
+    { word: "です", state: false, order: 4, correct: false },
+    { word: "か`", state: false, order: 5, correct: false },
   ]);
 
   const validate = (choices: any, setChoices: any) => {
@@ -478,6 +488,77 @@ const 第１課 = () => {
                   setOptions={setOptions5}
                   setSelected={setSelected5}
                   selected={selected5}
+                />
+              );
+            })}
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide className=" text-white">
+          <div
+            className="border-[2px] flex flex-col rounded-lg p-3 border-solid
+        border-slate-400"
+          >
+            <div>
+              <span>Menanyakan asal negara seseorang </span>
+              <span className="font-bold">
+                お
+                <ruby>
+                  国 <rt>くに</rt> は です か
+                </ruby>
+                <span>. 0</span>
+              </span>
+
+              <span>
+                digunakan untuk menanyakan asal negara orang lain secara sopan.
+              </span>
+              <span className="font-bold">
+                <ruby>おいくつ</ruby>
+              </span>
+              <span>, contoh:</span>
+            </div>
+            <br />
+
+            <p>
+              <ruby>お</ruby>
+              <span>
+                <ruby>
+                  国 <rt>くに</rt>
+                </ruby>
+              </span>
+              <ruby> は </ruby>
+              <span>どこ です か</span>
+            </p>
+            <br />
+            <p>Umur kamu berapa</p>
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide className=" flex flex-col justify-between items-center p-3 text-white py-16 px-4 mb-[5vh] ">
+          <h1 className="bg-rose-500 p-2 rounded-lg -mt-14 w-full text-center ">
+            Latihan
+          </h1>
+          <div className="flex flex-wrap gap-2 -mt-[10vh]">
+            {selected6.map((e: any) => {
+              return (
+                <SelectedOptions
+                  selected={e}
+                  setOptions={setOptions6}
+                  setSelected={setSelected6}
+                  validate={() => validate(options6, setSelected6)}
+                />
+              );
+            })}
+          </div>
+          <div className="flex flex-wrap gap-2 mb-14">
+            {options6.map((e: any) => {
+              return (
+                <Options
+                  validate={() => validate(options6, setSelected6)}
+                  option={e}
+                  setOptions={setOptions6}
+                  setSelected={setSelected6}
+                  selected={selected6}
                 />
               );
             })}
